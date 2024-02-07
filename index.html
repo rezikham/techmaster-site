@@ -122,13 +122,15 @@
       </section>
       <!-- product list and filter -->
       <section id="product-list" class="mt-12">
-        <div id="filter" class="block w-80 bg-gray-100 rounded-2xl">
+        <section id="filter" class="block w-80 bg-gray-100 rounded-2xl">
           <div
             id="filter-list"
-            class="px-4 pt-4 sticky top-[49px] h-[calc(-6.875rem + 100vh)]"
+            class="px-4 pt-4 flex flex-col items-center justify-center sticky top-[49px] h-[calc(-6.875rem + 100vh)]"
             style="overflow: hidden auto"
           >
+            <!-- clear all btn -->
             <button
+              id="clear-filter"
               class="text-blue-700 disabled:text-gray-300 font-bold m-auto transtion duration-200 ease-in-out delay-[25ms]"
             >
               <i
@@ -136,33 +138,295 @@
               ></i>
               Clear all
             </button>
-            <div id="attribute-filter" class="rounded-t-xl bg-white py-5 px-6">
-              <div
-                class="h-[144px] visible transition-all duration-200 ease-in-out delay-[25ms]"
-              >
-                <div class="flex items-center mb-4">
-                  <div class="relative inline-flex items-center">
-                    <input
-                      type="checkbox"
-                      name="Deals"
-                      id="deals"
-                      class="h-6 min-w-6 text-[1.2rem] appearance-none relative border border-solid border-gray-400 rounded overflow-hidden text-center font-bold checked:bg-blue-700 hover:bg-gray-200 before:content-[''] before:hidden before:absolute before:inset-[-1px] before:bg-blue-700 before:transform before:scale-0 before:transition-transform before:duration-200 before:ease-in-out before:delay-0"
-                    />
-                    <label
-                      for="deals"
-                      class="text-base cursor-pointer ml-4 text-gray-800 font-light"
-                      >Deals
+            <!-- spacer -->
+            <div class="spacer block w-1 min-w-1 h-4 min-h-4"></div>
 
-                      <span class="text-gray-500 font-light text-xs ml-2"
-                        >1234</span
-                      ></label
-                    >
+            <!-- deals, demo, voucher and DLC filter -->
+            <div id="attribute-filter" class="w-full rounded-t-xl bg-white">
+              <div class="py-5 px-6">
+                <div
+                  class="h-[144px] visible transition-all duration-200 ease-in-out delay-[25ms]"
+                >
+                  <div class="w-full flex items-center mb-4">
+                    <div class="relative inline-flex items-center">
+                      <input
+                        type="checkbox"
+                        name="Deals"
+                        id="deals"
+                        class="filter-option h-6 min-w-6 text-[1.2rem] cursor-pointer appearance-none relative border border-solid border-gray-400 rounded overflow-hidden text-center font-bold before:content-[] before:inset-[-1px]"
+                      />
+                      <label
+                        for="deals"
+                        class="text-base cursor-pointer ml-4 text-gray-800 font-light"
+                        >Deals
+
+                        <span
+                          class="text-gray-500 font-light text-xs ml-2"
+                        ></span
+                      ></label>
+                    </div>
+                  </div>
+                  <div class="w-full flex items-center mb-4">
+                    <div class="relative inline-flex items-center">
+                      <input
+                        type="checkbox"
+                        name="Demo"
+                        id="demo"
+                        class="filter-option h-6 min-w-6 text-[1.2rem] cursor-pointer appearance-none relative border border-solid border-gray-400 rounded overflow-hidden text-center font-bold before:content-[] before:inset-[-1px]"
+                      />
+                      <label
+                        for="demo"
+                        class="text-base cursor-pointer ml-4 text-gray-800 font-light"
+                        >Demo Available
+
+                        <span
+                          class="text-gray-500 font-light text-xs ml-2"
+                        ></span
+                      ></label>
+                    </div>
+                  </div>
+                  <div class="w-full flex items-center mb-4">
+                    <div class="relative inline-flex items-center">
+                      <input
+                        type="checkbox"
+                        name="Voucher"
+                        id="voucher"
+                        class="filter-option h-6 min-w-6 text-[1.2rem] cursor-pointer appearance-none relative border border-solid border-gray-400 rounded overflow-hidden text-center font-bold before:content-[] before:inset-[-1px]"
+                      />
+                      <label
+                        for="voucher"
+                        class="text-base cursor-pointer ml-4 text-gray-800 font-light"
+                        >Game Voucher eligible
+
+                        <span
+                          class="text-gray-500 font-light text-xs ml-2"
+                        ></span
+                      ></label>
+                    </div>
+                  </div>
+                  <div class="w-full flex items-center mb-4">
+                    <div class="relative inline-flex items-center">
+                      <input
+                        type="checkbox"
+                        name="DLC"
+                        id="dlc"
+                        class="filter-option h-6 min-w-6 text-[1.2rem] cursor-pointer appearance-none relative border border-solid border-gray-400 rounded overflow-hidden text-center font-bold before:content-[] before:inset-[-1px]"
+                      />
+                      <label
+                        for="dlc"
+                        class="text-base cursor-pointer ml-4 text-gray-800 font-light"
+                        >Games with DLC
+
+                        <span
+                          class="text-gray-500 font-light text-xs ml-2"
+                        ></span
+                      ></label>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
+            <!-- online filter -->
+            <div class="bg-white border-t-2 border-gray-300">
+              <div class="py-0 px-6">
+                <!-- expand filter btn -->
+                <button
+                  class="collapsable w-full bg-none border-[medium] border-none border-current flex justify-between items-center cursor-pointer py-5 px-0"
+                >
+                  <h3
+                    class="text-base leading-[1.4] text-left transition-all duration-200 ease-in-out delay-[25ms] m-0"
+                  >
+                    Nintendo Switch Online features
+                  </h3>
+                  <i
+                    class="fa-solid fa-angle-down transition-all duration-200 ease-in-out delay-[25ms]"
+                  ></i>
+                </button>
+                <div
+                  class="collapsed h-16 overflow-hidden invisible transition-all duration-200 ease-in-out delay-[25ms]"
+                >
+                  <div class="w-full flex items-center mb-4">
+                    <div class="relative inline-flex items-center">
+                      <input
+                        type="checkbox"
+                        name="Save Data Cloud"
+                        id="save-data-cloud"
+                        class="filter-option h-6 min-w-6 text-[1.2rem] cursor-pointer appearance-none relative border border-solid border-gray-400 rounded overflow-hidden text-center font-bold before:content-[] before:inset-[-1px]"
+                      />
+                      <label
+                        for="save-data-cloud"
+                        class="text-base cursor-pointer ml-4 text-gray-800 font-light"
+                        >Save Data Cloud
+                        <span
+                          class="text-gray-500 font-light text-xs ml-2"
+                        ></span
+                      ></label>
+                    </div>
+                  </div>
+                  <div class="w-full flex items-center mb-4">
+                    <div class="relative inline-flex items-center">
+                      <input
+                        type="checkbox"
+                        name="Online Play"
+                        id="online-play"
+                        class="filter-option h-6 min-w-6 text-[1.2rem] cursor-pointer appearance-none relative border border-solid border-gray-400 rounded overflow-hidden text-center font-bold before:content-[] before:inset-[-1px]"
+                      />
+                      <label
+                        for="online-play"
+                        class="text-base cursor-pointer ml-4 text-gray-800 font-light"
+                        >Online Play
+                        <span
+                          class="text-gray-500 font-light text-xs ml-2"
+                        ></span
+                      ></label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Game type filter -->
+            <div
+              class="w-full bg-white border-t-2 border-gray-300 rounded-b-xl"
+            >
+              <div class="py-0 px-6">
+                <!-- expand filter btn -->
+                <button
+                  class="collapsable w-full bg-none border-[medium] border-none border-current flex justify-between items-center cursor-pointer py-5 px-0"
+                >
+                  <h3
+                    class="text-base leading-[1.4] text-left transition-all duration-200 ease-in-out delay-[25ms] m-0"
+                  >
+                    Game type
+                  </h3>
+                  <i
+                    class="fa-solid fa-angle-down transition-all duration-200 ease-in-out delay-[25ms]"
+                  ></i>
+                </button>
+                <div
+                  class="collapsed h-56 overflow-hidden invisible transition-all duration-200 ease-in-out delay-[25ms]"
+                >
+                  <div class="w-full flex items-center mb-4">
+                    <div class="relative inline-flex items-center">
+                      <input
+                        type="checkbox"
+                        name="Action"
+                        id="action"
+                        class="filter-option h-6 min-w-6 text-[1.2rem] cursor-pointer appearance-none relative border border-solid border-gray-400 rounded overflow-hidden text-center font-bold before:content-[] before:inset-[-1px]"
+                      />
+                      <label
+                        for="action"
+                        class="text-base cursor-pointer ml-4 text-gray-800 font-light"
+                        >Action
+                        <span
+                          class="text-gray-500 font-light text-xs ml-2"
+                        ></span
+                      ></label>
+                    </div>
+                  </div>
+                  <div class="w-full flex items-center mb-4">
+                    <div class="relative inline-flex items-center">
+                      <input
+                        type="checkbox"
+                        name="Adventure"
+                        id="adventure"
+                        class="filter-option h-6 min-w-6 text-[1.2rem] cursor-pointer appearance-none relative border border-solid border-gray-400 rounded overflow-hidden text-center font-bold before:content-[] before:inset-[-1px]"
+                      />
+                      <label
+                        for="adventure"
+                        class="text-base cursor-pointer ml-4 text-gray-800 font-light"
+                        >Adventure
+                        <span
+                          class="text-gray-500 font-light text-xs ml-2"
+                        ></span
+                      ></label>
+                    </div>
+                  </div>
+                  <div class="w-full flex items-center mb-4">
+                    <div class="relative inline-flex items-center">
+                      <input
+                        type="checkbox"
+                        name="Education"
+                        id="education"
+                        class="filter-option h-6 min-w-6 text-[1.2rem] cursor-pointer appearance-none relative border border-solid border-gray-400 rounded overflow-hidden text-center font-bold before:content-[] before:inset-[-1px]"
+                      />
+                      <label
+                        for="education"
+                        class="text-base cursor-pointer ml-4 text-gray-800 font-light"
+                      >
+                        Education
+                        <span
+                          class="text-gray-500 font-light text-xs ml-2"
+                        ></span>
+                      </label>
+                    </div>
+                  </div>
+
+                  <div class="w-full flex items-center mb-4">
+                    <div class="relative inline-flex items-center">
+                      <input
+                        type="checkbox"
+                        name="Fighting"
+                        id="fighting"
+                        class="filter-option h-6 min-w-6 text-[1.2rem] cursor-pointer appearance-none relative border border-solid border-gray-400 rounded overflow-hidden text-center font-bold before:content-[] before:inset-[-1px]"
+                      />
+                      <label
+                        for="fighting"
+                        class="text-base cursor-pointer ml-4 text-gray-800 font-light"
+                      >
+                        Fighting
+                        <span
+                          class="text-gray-500 font-light text-xs ml-2"
+                        ></span>
+                      </label>
+                    </div>
+                  </div>
+
+                  <div class="w-full flex items-center mb-4">
+                    <div class="relative inline-flex items-center">
+                      <input
+                        type="checkbox"
+                        name="Multiplayer"
+                        id="multiplayer"
+                        class="filter-option h-6 min-w-6 text-[1.2rem] cursor-pointer appearance-none relative border border-solid border-gray-400 rounded overflow-hidden text-center font-bold before:content-[] before:inset-[-1px]"
+                      />
+                      <label
+                        for="multiplayer"
+                        class="text-base cursor-pointer ml-4 text-gray-800 font-light"
+                      >
+                        Multiplayer
+                        <span
+                          class="text-gray-500 font-light text-xs ml-2"
+                        ></span>
+                      </label>
+                    </div>
+                  </div>
+
+                  <div class="w-full flex items-center mb-4">
+                    <div class="relative inline-flex items-center">
+                      <input
+                        type="checkbox"
+                        name="Music"
+                        id="music"
+                        class="filter-option h-6 min-w-6 text-[1.2rem] cursor-pointer appearance-none relative border border-solid border-gray-400 rounded overflow-hidden text-center font-bold before:content-[] before:inset-[-1px]"
+                      />
+                      <label
+                        for="music"
+                        class="text-base cursor-pointer ml-4 text-gray-800 font-light"
+                      >
+                        Music
+                        <span
+                          class="text-gray-500 font-light text-xs ml-2"
+                        ></span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- spacer -->
+            <div class="spacer block w-1 min-w-1 h-4 min-h-4"></div>
           </div>
-        </div>
+        </section>
         <div id="product"></div>
       </section>
     </main>
@@ -179,18 +443,7 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     ></script>
-    <script>
-      $("#deals").click(function () {
-        if ($(this).is(":checked")) {
-          $("#deals").prop("checked", true);
-          $("#deals::before").css("transform", "scale(1)");
-          $("#deals::before").css("display", "block");
-        } else {
-          $("#deals").prop("checked", false);
-          $("#deals::before").css("transform", "scale(0)");
-          $("#deals::before").css("display", "none");
-        }
-      });
-    </script>
+
+    <script type="module" src="/js/filter.js"></script>
   </body>
 </html>

@@ -3,3 +3,23 @@
   line-height: 1.5;
   font-weight: 400;
 }
+
+.filter-option::before {
+  --tw-scale-x: 0;
+  --tw-scale-y: 0;
+  content: "" !important;
+  display: block;
+  position: absolute;
+  background-color: #1d4ed8;
+  transition: transform 200ms ease-in-out;
+  transform: scale(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.filter-option.checked::before {
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+}
+
+.collapsed {
+  height: 0 !important;
+}
