@@ -4,6 +4,14 @@
   font-weight: 400;
 }
 
+.filter-option {
+  background-color: transparent;
+}
+
+.filter-option:hover {
+  background-color: #e2e8f0;
+}
+
 .filter-option::before {
   --tw-scale-x: 0;
   --tw-scale-y: 0;
