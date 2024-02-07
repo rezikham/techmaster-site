@@ -15,23 +15,8 @@ $(document).ready(function () {
       e.addClass("checked");
     }
   }
-  function changeMouseOverEffect(e) {
-    e.css("background-color", "#E2E8F0");
-  }
-  function changeMouseOutEffect(e) {
-    e.css("background-color", "transparent");
-  }
 
   $(".filter-option").each(function () {
-    console.log($(this));
-    $(this).hover(
-      function () {
-        changeMouseOverEffect($(this));
-      },
-      function () {
-        changeMouseOutEffect($(this));
-      }
-    );
     $($(this)).click(function () {
       checkboxCss($(this));
     });
