@@ -1,11 +1,15 @@
 $(document).ready(function () {
-  // if none of .filter-option are checked, disable clear all button, and if one or more is checked, when click on clear all button will clear all checked
-
-  $("#clear-filter").click(function () {
+  function clearFilterDisable() {
+    if ($(".filter-option:checked").length == 0) {
+      $("#clear-filter").prop("disabled", true);
+    } else {
+      $("#clear-filter").prop("disabled", false);
+    }
+  }
+  function clearFilter() {
     $(".filter-option").prop("checked", false);
     $(".filter-option").removeClass("checked");
-  });
-
+  }
   function checkboxCss(e) {
     if (!e.is(":checked")) {
       e.prop("checked", false);
@@ -16,9 +20,15 @@ $(document).ready(function () {
     }
   }
 
+  $("#clear-filter").click(function () {
+    clearFilter();
+    clearFilterDisable();
+  });
+
   $(".filter-option").each(function () {
     $($(this)).click(function () {
       checkboxCss($(this));
+      clearFilterDisable();
     });
   });
 
@@ -28,4 +38,6 @@ $(document).ready(function () {
     $(this).siblings(".overflow-hidden").find("div").toggleClass("visible");
     $(this).find("i").toggleClass("rotate-180");
   });
+
+  clearFilterDisable();
 });
