@@ -36,7 +36,7 @@ const productDb = [
     release: "3/22/24",
     img: "https://assets.nintendo.com/image/upload/ar_16:9,b_auto:border,c_lpad/b_white/f_auto/q_auto/dpr_2.0/c_scale,w_300/ncom/software/switch/70010000072191/2fda60f3007987817be456876e7755f5120522a75e477961fbb622fd32f9e588",
     genre: ["Puzzle", "Action"],
-    demo: true,
+    demo: false,
     dlc: false,
   },
   {
@@ -86,8 +86,8 @@ const productDb = [
     release: "6/11/21",
     img: "/assets/pictures/9-1.png",
     genre: ["Education"],
-    demo: true,
-    dlc: false,
+    demo: false,
+    dlc: true,
   },
   {
     id: 10,

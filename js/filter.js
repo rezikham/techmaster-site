@@ -1,6 +1,7 @@
 $(document).ready(function () {
+  filterArray = localStorage.getItem("filter").split(",");
   function clearFilterDisable() {
-    if ($(".filter-option:checked").length == 0) {
+    if (localStorage.getItem("filter") == "") {
       $("#clear-filter").prop("disabled", true);
     } else {
       $("#clear-filter").prop("disabled", false);
@@ -9,54 +10,56 @@ $(document).ready(function () {
   function clearFilter() {
     $(".filter-option").prop("checked", false);
     $(".filter-option").removeClass("checked");
+    localStorage.setItem("filter", "");
   }
   function checkboxCss(e) {
-    if (!e.is(":checked")) {
-      e.prop("checked", false);
-      e.removeClass("checked");
-    } else {
+    if (e.is(":checked")) {
       e.prop("checked", true);
       e.addClass("checked");
+    } else {
+      e.prop("checked", false);
+      e.removeClass("checked");
     }
+  }
+
+  function filterProductHidden(filterArray) {
+    $(".product").each(function () {
+      var isHidden = false;
+      if (filterArray.includes("demo") && $(this).attr("demo") !== "true") {
+        isHidden = true;
+      }
+      if (filterArray.includes("dlc") && $(this).attr("dlc") !== "true") {
+        isHidden = true;
+      }
+      let tempFilterArray = filterArray.filter(
+        item => item != "demo" && item != "dlc"
+      );
+      tempFilterArray.forEach(filter => {
+        if (!$(this).attr("filter").toLowerCase().split(",").includes(filter)) {
+          console.log($(this).attr("filter").toLowerCase().split(","));
+          isHidden = true;
+        }
+      });
+      if (isHidden) {
+        $(this).addClass("hidden");
+      } else {
+        $(this).removeClass("hidden");
+      }
+    });
   }
 
   function filterProduct(element) {
     var filter = element.attr("id");
+    var filterArray = localStorage.getItem("filter")
+      ? localStorage.getItem("filter").split(",")
+      : [];
     if (element.prop("checked")) {
-      filter += localStorage.getItem("filter") + "" + filter;
-      $(".product").each(function () {
-        if (filter == "demo") {
-          if ($(this).attr("demo") !== "true") {
-            $(this).addClass("hidden");
-          }
-        } else if (filter == "dlc") {
-          if ($(this).attr("dlc") !== "true") {
-            $(this).addClass("hidden");
-          }
-        } else {
-          if ($(this).attr("filter").toLowerCase().indexOf(filter) == -1) {
-            $(this).addClass("hidden");
-          }
-        }
-      });
+      filterArray.push(filter);
     } else {
-      $(".product").each(function () {
-        if (filter == "demo") {
-          if ($(this).attr("demo") !== "true") {
-            $(this).removeClass("hidden");
-          }
-        } else if (filter == "dlc") {
-          if ($(this).attr("dlc") !== "true") {
-            $(this).removeClass("hidden");
-          }
-        } else {
-          if ($(this).attr("filter").toLowerCase().indexOf(filter) == -1) {
-            $(this).removeClass("hidden");
-          }
-        }
-      });
+      filterArray = filterArray.filter(item => item != filter);
     }
-    localStorage.setItem("filter", filter);
+    filterProductHidden(filterArray);
+    localStorage.setItem("filter", filterArray.join(","));
   }
   function updateFilterNumber() {
     var filterNumber = {
@@ -99,10 +102,14 @@ $(document).ready(function () {
   $(".filter-option").each(function () {
     $($(this)).click(function () {
       checkboxCss($(this));
-      clearFilterDisable();
       filterProduct($(this));
+      clearFilterDisable();
       updateFilterNumber();
     });
+    if (filterArray.includes($(this).attr("id"))) {
+      $(this).prop("checked", true);
+      $(this).addClass("checked");
+    }
   });
 
   $(".collapsable").click(function () {
@@ -111,6 +118,8 @@ $(document).ready(function () {
     $(this).siblings(".overflow-hidden").find("div").toggleClass("visible");
     $(this).find("i").toggleClass("rotate-180");
   });
+
+  filterProductHidden(filterArray);
 
   updateFilterNumber();
   clearFilterDisable();
