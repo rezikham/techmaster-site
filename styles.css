@@ -103,3 +103,7 @@
   place-items: center;
   grid-template-columns: auto repeat(4, 58px);
 }
+
+.hidden {
+  display: none;
+}

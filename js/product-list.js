@@ -5,7 +5,7 @@ const productDb = [
     price: 49.99,
     release: "2/16/24",
     img: "/assets/pictures/1-1.png",
-    filter: ["Puzzle", "Action"],
+    genre: ["Puzzle", "Action"],
     demo: true,
     dlc: false,
   },
@@ -15,7 +15,7 @@ const productDb = [
     price: 59.99,
     release: "10/20/22",
     img: "/assets/pictures/2-1.png",
-    filter: ["Strategy"],
+    genre: ["Strategy"],
     demo: true,
     dlc: true,
   },
@@ -25,7 +25,7 @@ const productDb = [
     price: 49.99,
     release: "2/16/24",
     img: "/assets/pictures/3-1.png",
-    filter: ["Puzzle", "Action"],
+    genre: ["Puzzle", "Action"],
     demo: true,
     dlc: false,
   },
@@ -35,67 +35,67 @@ const productDb = [
     price: 59.99,
     release: "3/22/24",
     img: "https://assets.nintendo.com/image/upload/ar_16:9,b_auto:border,c_lpad/b_white/f_auto/q_auto/dpr_2.0/c_scale,w_300/ncom/software/switch/70010000072191/2fda60f3007987817be456876e7755f5120522a75e477961fbb622fd32f9e588",
-    filter: ["Puzzle", "Action"],
+    genre: ["Puzzle", "Action"],
     demo: true,
     dlc: false,
   },
   {
-    id: 1,
-    name: "Mario vs. Donkey Kong™",
-    price: 49.99,
-    release: "2/16/24",
-    img: "https://assets.nintendo.com/image/upload/ar_16:9,b_auto:border,c_lpad/b_white/f_auto/q_auto/dpr_2.0/c_scale,w_300/ncom/software/switch/70010000072191/2fda60f3007987817be456876e7755f5120522a75e477961fbb622fd32f9e588",
-    filter: ["Puzzle", "Action"],
+    id: 5,
+    name: "Splatoon™ 3",
+    price: 41.99,
+    release: "9/9/22",
+    img: "/assets/pictures/5-1.png",
+    genre: ["Puzzle", "Action"],
     demo: true,
     dlc: false,
   },
   {
-    id: 1,
-    name: "Mario vs. Donkey Kong™",
-    price: 49.99,
-    release: "2/16/24",
-    img: "https://assets.nintendo.com/image/upload/ar_16:9,b_auto:border,c_lpad/b_white/f_auto/q_auto/dpr_2.0/c_scale,w_300/ncom/software/switch/70010000072191/2fda60f3007987817be456876e7755f5120522a75e477961fbb622fd32f9e588",
-    filter: ["Puzzle", "Action"],
+    id: 6,
+    name: "Kirby's Dream Buffet™",
+    price: 10.49,
+    release: "8/17/22",
+    img: "/assets/pictures/6-1.png",
+    genre: ["Puzzle", "Action"],
     demo: true,
     dlc: false,
   },
   {
-    id: 1,
-    name: "Mario vs. Donkey Kong™",
-    price: 49.99,
-    release: "2/16/24",
-    img: "https://assets.nintendo.com/image/upload/ar_16:9,b_auto:border,c_lpad/b_white/f_auto/q_auto/dpr_2.0/c_scale,w_300/ncom/software/switch/70010000072191/2fda60f3007987817be456876e7755f5120522a75e477961fbb622fd32f9e588",
-    filter: ["Puzzle", "Action"],
+    id: 7,
+    name: "It Takes Two",
+    price: 19.99,
+    release: "11/4/22",
+    img: "/assets/pictures/7-1.png",
+    genre: ["Puzzle", "Action"],
     demo: true,
     dlc: false,
   },
   {
-    id: 1,
-    name: "Mario vs. Donkey Kong™",
-    price: 49.99,
-    release: "2/16/24",
-    img: "https://assets.nintendo.com/image/upload/ar_16:9,b_auto:border,c_lpad/b_white/f_auto/q_auto/dpr_2.0/c_scale,w_300/ncom/software/switch/70010000072191/2fda60f3007987817be456876e7755f5120522a75e477961fbb622fd32f9e588",
-    filter: ["Puzzle", "Action"],
+    id: 8,
+    name: "Fitness Boxing 2: Rhythm & Exercise",
+    price: 39.99,
+    release: "12/4/20",
+    img: "/assets/pictures/8-1.png",
+    genre: ["Music"],
+    demo: true,
+    dlc: true,
+  },
+  {
+    id: 9,
+    name: "Game Builder Garage™",
+    price: 29.99,
+    release: "6/11/21",
+    img: "/assets/pictures/9-1.png",
+    genre: ["Education"],
     demo: true,
     dlc: false,
   },
   {
-    id: 1,
-    name: "Mario vs. Donkey Kong™",
-    price: 49.99,
-    release: "2/16/24",
-    img: "https://assets.nintendo.com/image/upload/ar_16:9,b_auto:border,c_lpad/b_white/f_auto/q_auto/dpr_2.0/c_scale,w_300/ncom/software/switch/70010000072191/2fda60f3007987817be456876e7755f5120522a75e477961fbb622fd32f9e588",
-    filter: ["Puzzle", "Action"],
-    demo: true,
-    dlc: false,
-  },
-  {
-    id: 1,
-    name: "Mario vs. Donkey Kong™",
-    price: 49.99,
-    release: "2/16/24",
-    img: "https://assets.nintendo.com/image/upload/ar_16:9,b_auto:border,c_lpad/b_white/f_auto/q_auto/dpr_2.0/c_scale,w_300/ncom/software/switch/70010000072191/2fda60f3007987817be456876e7755f5120522a75e477961fbb622fd32f9e588",
-    filter: ["Puzzle", "Action"],
+    id: 10,
+    name: "Pikmin™ 4",
+    price: 59.99,
+    release: "7/21/23",
+    img: "/assets/pictures/10-1.png",
+    genre: ["Action", "Adventure"],
     demo: true,
     dlc: false,
   },
@@ -103,14 +103,15 @@ const productDb = [
 $(document).ready(function () {
   var productList = "";
   productDb.forEach(product => {
-    console.log(product.id);
     productList += `
             <div
-              id="product"
-              class="h-full flex-col justify-end relative bg-white rounded-2xl"
+              dlc="${product.dlc}"
+              demo="${product.demo}"
+              filter="${product.genre}"
+              class="product h-full flex-col justify-end relative bg-white rounded-2xl"
             >
               <a
-                href=${product.id | ""}
+                href="${product.id | ""}"
                 class="h-full w-full flex-col text-gray-700 relative mt-0 rounded-2xl no-underline"
               >
                 <div
